@@ -28,6 +28,6 @@ layer = convolution.ConvolutionLayer(
 output_blob = base.Blob()
 layer.forward([input_blob], [output_blob])
 
-out = output_blob.data()[0, :, :, 0].astype(np.uint8)
+out = np.multiply(output_blob.data()[0, :, :, 0], 256).astype(np.uint8)
 io.imsave('out.png', out)
 print('Convolution result written to out.png')
